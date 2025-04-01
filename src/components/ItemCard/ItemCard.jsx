@@ -1,11 +1,16 @@
-import './ItemCard.css'
- function ItemCard({item}) {
-    return(
-        <li className="card" >
-            <h2 className="card__title">{item.name}</h2>
-            <img className="card__image" src={item.link} alt={item.name}></img>
-        </li>
-    )
- }
+import "./ItemCard.css";
+function ItemCard({ item, onCardClick }) {
+  return (
+    <li className="card">
+      <h2 className="card__title">{item.name}</h2>
+      <img
+        onClick={() => onCardClick(item)}
+        className="card__image"
+        src={item.link}
+        alt={item.name}
+      ></img>
+    </li>
+  );
+}
 
- export default ItemCard; 
+export default ItemCard;

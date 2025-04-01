@@ -1,0 +1,14 @@
+.modal__content {
+  width: 498px;
+  height: 810px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.modal__image {
+    width: 495px;
+    height: 490px;
+    align-self: center;
+    border-radius: 20px;
+}
