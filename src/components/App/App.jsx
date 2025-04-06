@@ -13,7 +13,7 @@ function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
-    city: "", 
+    city: "",
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -79,20 +79,39 @@ function App() {
               htmlFor="hot"
               className="modal__label modal__label_type_radio"
             >
-              <input id="hot" type="radio" className="modal__radio-input" /> Hot
+              <input
+                id="hot"
+                type="radio"
+                className="modal__radio-input"
+                name="weatherType"
+                value="hot"
+              />{" "}
+              Hot
             </label>
             <label
               htmlFor="warm"
               className="modal__label modal__label_type_radio"
             >
-              <input id="warm" type="radio" className="modal__radio-input" />{" "}
+              <input
+                id="warm"
+                type="radio"
+                className="modal__radio-input"
+                name="weatherType"
+                value="warm"
+              />{" "}
               Warm
             </label>
             <label
               htmlFor="cold"
               className="modal__label modal__label_type_radio"
             >
-              <input id="cold" type="radio" className="modal__radio-input" />{" "}
+              <input
+                id="cold"
+                type="radio"
+                className="modal__radio-input"
+                name="weatherType"
+                value="cold"
+              />{" "}
               Cold
             </label>
           </fieldset>
