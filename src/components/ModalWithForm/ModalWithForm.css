@@ -34,13 +34,14 @@
   gap: 24px;
 }
 .modal__title {
-  margin: 0 0 24px;
+  margin: 28px 0 24px;
   font-family: "CabinetGrotesk-Medium";
   font-weight: 700;
   font-size: 16px;
 }
 
 .modal__close-btn {
+  margin-top: 20px;
   position: absolute;
   height: 16px;
   width: 16px;
@@ -52,7 +53,7 @@
 }
 .modal__radio-buttons {
   padding: 0;
-  margin: 0;
+  margin-top: 0;
   border: none;
   display: flex;
   flex-direction: column;
@@ -95,4 +96,8 @@
     color:#fff; 
 
     
+}
+
+.modal__legend{
+  margin-bottom: 12px;
 }
