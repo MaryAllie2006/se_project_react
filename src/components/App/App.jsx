@@ -51,25 +51,26 @@ function App() {
           title="New Garment"
           activeModal={activeModal}
           onClose={closeActiveModal}
+          isOpen={activeModal === "add-garment"}
         >
           <label htmlFor="name" className="modal__label">
             Name
-            <input
-              type="text"
-              className="modal__input"
-              id="name"
-              placeholder="Name"
-            />
           </label>
-          <label htmlFor="imageURL" className="modal__label">
-            Image{" "}
-            <input
-              type="text"
-              className="modal__input"
-              id="image"
-              placeholder="Image URL"
-            />
+          <input
+            type="text"
+            className="modal__input"
+            id="name"
+            placeholder="Name"
+          />
+          <label htmlFor="image" className="modal__label">
+            Image
           </label>
+          <input
+            type="text"
+            className="modal__input"
+            id="image"
+            placeholder="Image URL"
+          />
           <fieldset className="modal__radio-buttons">
             <legend className="modal__legend">
               {" "}
