@@ -18,13 +18,17 @@ export default function AddItemModal({ onClose, isOpen, activeModal, onAddItemMo
     setWeather(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault(); 
-    onAddItemModalSubmit({name, imageUrl, weather}); 
-    //empty the inputs 
-    setName("");
-    setImageUrl(""); 
-    setWeather(""); 
+    onAddItemModalSubmit({ name, imageUrl, weather })
+      .then(() => {
+        setName("");
+        setImageUrl("");
+        setWeather("");
+        onClose(); 
+      }).catch((error) => {
+        console.error("Error submitting item:", error);
+      });
   }; 
 
   return (

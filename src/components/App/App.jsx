@@ -65,6 +65,10 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    getItems().then((data) => {})
+  }, []);
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
