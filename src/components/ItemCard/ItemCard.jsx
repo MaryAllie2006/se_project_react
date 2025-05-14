@@ -1,4 +1,5 @@
 import "./ItemCard.css";
+import React from "react";
 function ItemCard({ item, onCardClick }) {
   return (
     <li className="card">
