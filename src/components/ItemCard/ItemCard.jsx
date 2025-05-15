@@ -1,5 +1,6 @@
 import "./ItemCard.css";
 import React from "react";
+
 function ItemCard({ item, onCardClick }) {
   return (
     <li className="card">
@@ -7,9 +8,10 @@ function ItemCard({ item, onCardClick }) {
       <img
         onClick={() => onCardClick(item)}
         className="card__image"
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
       ></img>
+      
     </li>
   );
 }

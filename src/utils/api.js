@@ -45,5 +45,10 @@ export const addItem = ({ name, imageUrl, weather }) => {
 export const deleteItem = (id) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: 'DELETE',
-  }).then(handleResponse);
+  }).then((response) => {
+    if (!response.ok) {
+      return Promise.reject(`Error: ${response.status}`);
+    }
+    return response.json();
+  });
 };
