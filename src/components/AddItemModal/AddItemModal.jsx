@@ -18,9 +18,11 @@ export default function AddItemModal({ onClose, isOpen, activeModal, onAddItemMo
     setWeather(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+ 
+   const handleSubmit = (e) => {
     e.preventDefault(); 
-    onAddItemModalSubmit({ name, imageUrl, weather })
+    console.log("onAddItemModalSubmit:", typeof onAddItemModalSubmit); // Debugging
+    Promise.resolve(onAddItemModalSubmit({ name, imageUrl, weather }))
       .then(() => {
         setName("");
         setImageUrl("");

@@ -56,6 +56,7 @@ function App() {
       });
   };
 
+
   const handleDeleteItem = (id) => {
     deleteItem(id)
       .then(() => {
@@ -117,6 +118,7 @@ function App() {
           onClose={closeActiveModal}
           isOpen={activeModal === "add-garment"}
           activeModal={activeModal}
+          onAddItemModalSubmit={handleAddItemModalSubmit}
         />
         <ItemModal
           activeModal={activeModal}
