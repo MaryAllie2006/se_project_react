@@ -108,7 +108,7 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile handleCardClick={handleCardClick} />}
+              element={<Profile handleCardClick={handleCardClick} handleAddClick={handleAddClick} />}
             />
           </Routes>
 
@@ -124,9 +124,9 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
-          onAddItemModalSubmit={handleAddItemModalSubmit}
           onDeleteItem={handleDeleteItem}
         />
+
       </div>
     </CurrentTemperatureUnitContext.Provider>
   );
