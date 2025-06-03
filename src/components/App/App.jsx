@@ -108,7 +108,7 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile handleCardClick={handleCardClick} handleAddClick={handleAddClick} />}
+              element={<Profile handleCardClick={handleCardClick} handleAddClick={handleAddClick} clothingItems={clothingItems} />}
             />
           </Routes>
 
@@ -126,6 +126,7 @@ function App() {
           onClose={closeActiveModal}
           onDeleteItem={handleDeleteItem}
         />
+        
 
       </div>
     </CurrentTemperatureUnitContext.Provider>

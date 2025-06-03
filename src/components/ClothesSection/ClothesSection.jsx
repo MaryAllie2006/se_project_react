@@ -3,11 +3,11 @@ import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 
-function ClothesSection({ handleCardClick, handleAddClick }) {
+function ClothesSection({ handleCardClick, handleAddClick, clothingItems }) {
   return (
     <div className="clothes-section">
       <div>
-        <p>Your Items</p>
+        <p class="header__your-items-text">Your Items</p>
         <button
           onClick={handleAddClick}
           type="button"
@@ -18,7 +18,7 @@ function ClothesSection({ handleCardClick, handleAddClick }) {
       </div>
 
       <ul className="clothesSection__items__items">
-        {defaultClothingItems.map((filteredCard) => {
+        {clothingItems.map((filteredCard) => {
           return (
             <ItemCard
               key={filteredCard._id}

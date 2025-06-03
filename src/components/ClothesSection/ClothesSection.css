@@ -1,0 +1,5 @@
+.clothesSection__items__items{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
