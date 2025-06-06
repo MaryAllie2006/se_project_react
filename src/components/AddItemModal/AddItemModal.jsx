@@ -21,7 +21,6 @@ export default function AddItemModal({ onClose, isOpen, activeModal, onAddItemMo
  
    const handleSubmit = (e) => {
     e.preventDefault(); 
-    console.log("onAddItemModalSubmit:", typeof onAddItemModalSubmit); // Debugging
     Promise.resolve(onAddItemModalSubmit({ name, imageUrl, weather }))
       .then(() => {
         setName("");

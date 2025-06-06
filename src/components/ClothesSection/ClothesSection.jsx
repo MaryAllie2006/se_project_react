@@ -1,17 +1,17 @@
 import "./ClothesSection.css";
-import { defaultClothingItems } from "../../utils/constants";
+
 import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 
 function ClothesSection({ handleCardClick, handleAddClick, clothingItems }) {
   return (
     <div className="clothes-section">
-      <div>
-        <p class="header__your-items-text">Your Items</p>
+      <div className="clothes-section__header" >
+        <p className="clothes-section__title">Your Items</p>
         <button
           onClick={handleAddClick}
           type="button"
-          className="header__add-clothes-btn"
+          className="clothes-section__add-btn"
         >
           + ADD NEW{" "}
         </button>

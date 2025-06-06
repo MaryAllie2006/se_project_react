@@ -1,5 +1,23 @@
-.clothesSection__items__items{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+.clothesSection__items__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0; 
+}
+.clothes-section__header {
+  display: flex;
+  align-items: center;
+
+}
+.clothes-section__title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 12px
+}
+
+.clothes-section__add-btn {
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }

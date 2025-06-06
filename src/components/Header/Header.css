@@ -6,13 +6,6 @@
     
 }
 
-.header__add-clothes-btn{
-    margin: 0; /* Remove auto margin */
-    border: none;
-    background: transparent;
-    cursor: pointer;
-}
-
 .header_user-container{
     display: flex;
     align-items: center;

@@ -9,17 +9,7 @@ const handleResponse = (res) => {
 
 function getItems() {
   return fetch(`${baseUrl}/items`)
-    .then((response) => {
-      if (!response.ok) {
-        console.error(`Error fetching items: ${response.status} - ${response.statusText}`);
-        return Promise.reject(`Error: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Fetched items:", data); 
-      return data;
-    })
+    .then(handleResponse)
     .catch((error) => {
       console.error("Failed to fetch items:", error);
       return []; 
@@ -45,10 +35,10 @@ export const addItem = ({ name, imageUrl, weather }) => {
 export const deleteItem = (id) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: 'DELETE',
-  }).then((response) => {
-    if (!response.ok) {
-      return Promise.reject(`Error: ${response.status}`);
-    }
-    return response.json();
-  });
+  })
+    .then(handleResponse) 
+    .catch((error) => {
+      console.error(`Failed to delete item ${id}:`, error);
+      throw error; 
+    });
 };
