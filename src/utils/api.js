@@ -9,11 +9,7 @@ const handleResponse = (res) => {
 
 function getItems() {
   return fetch(`${baseUrl}/items`)
-    .then(handleResponse)
-    .catch((error) => {
-      console.error("Failed to fetch items:", error);
-      return []; 
-    });
+    .then(handleResponse);
 }
 
 export { getItems };
@@ -36,9 +32,5 @@ export const deleteItem = (id) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: 'DELETE',
   })
-    .then(handleResponse) 
-    .catch((error) => {
-      console.error(`Failed to delete item ${id}:`, error);
-      throw error; 
-    });
+    .then(handleResponse);
 };
