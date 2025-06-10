@@ -2,17 +2,17 @@
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  margin: 0; 
+  margin: 0;
 }
 .clothes-section__header {
   display: flex;
   align-items: center;
-
+  margin-left: 45px;
 }
 .clothes-section__title {
   font-size: 24px;
   font-weight: bold;
-  margin-right: 12px
+  margin-right: 12px;
 }
 
 .clothes-section__add-btn {
@@ -20,4 +20,9 @@
   border: none;
   background: transparent;
   cursor: pointer;
+  width: 88;
+  height: 25;
+  top: 135px;
+  left: 499px;
+  font-size: 15px;
 }

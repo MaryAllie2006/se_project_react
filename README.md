@@ -1,4 +1,35 @@
-# React + Vite
+# SE Project React
+
+## Project Description
+
+This project is a React application built with Vite that allows users to manage a virtual wardrobe. Users can add, view, and delete garments, each with a name, photo, and weather suitability. The app features modals for adding and deleting items, a profile section, and responsive UI components.
+
+## Technologies and Techniques Used
+
+- **React** for building user interfaces
+- **Vite** for fast development and build tooling
+- **React Router** for client-side routing
+- **CSS Flexbox** for responsive layouts
+- **Fetch API** for backend communication
+- **ESLint** for code quality
+- **Context API** for state management
+
+## Features
+
+- Add new garments with name, image, and weather suitability
+- View all garments in a card layout
+- Delete garments with confirmation modals
+- Responsive design for desktop and mobile
+- Profile section with user avatar and garment list
+
+## Screenshots
+
+![Main Page](./screenshots/home.png)
+![Add Garment Modal](./screenshots/garment.png)
+![User Page](./screenshots/user.png)
+
+
+---
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
