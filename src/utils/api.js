@@ -1,18 +1,18 @@
 const baseUrl = 'http://localhost:3001';
 
-const handleResponse = (res) => {
+export const handleResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
   return Promise.reject(`Error: ${res.status}`);
 };
 
-function getItems() {
+export function getItems() {
   return fetch(`${baseUrl}/items`)
     .then(handleResponse);
 }
 
-export { getItems };
+
 
 export const addItem = ({ name, imageUrl, weather }) => {
   return fetch(`${baseUrl}/items`, {
