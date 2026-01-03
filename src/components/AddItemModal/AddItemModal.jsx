@@ -39,7 +39,7 @@ export default function AddItemModal({ onClose, isOpen, activeModal, onAddItemMo
       activeModal={activeModal}
       onClose={onClose}
       isOpen={isOpen}
-      onSubmit ={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <label htmlFor="name" className="modal__label">
         Name
@@ -53,6 +53,7 @@ export default function AddItemModal({ onClose, isOpen, activeModal, onAddItemMo
         minLength="1"
         maxLength="20"
         onChange={handleNameChange}
+        value={name}
       />
       <label htmlFor="image" className="modal__label">
         Image

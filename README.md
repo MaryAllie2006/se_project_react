@@ -1,5 +1,8 @@
 # SE Project React
 
+## Backend Repo link 
+    (https://github.com/MaryAllie2006/se_project_react.git)
+
 ## Project Description
 
 This project is a React application built with Vite that allows users to manage a virtual wardrobe. Users can add, view, and delete garments, each with a name, photo, and weather suitability. The app features modals for adding and deleting items, a profile section, and responsive UI components.

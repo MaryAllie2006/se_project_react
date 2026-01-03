@@ -1,3 +1,4 @@
+import {useState} from "react"; 
 import ClothesSection from "../ClothesSection/ClothesSection";
 import SideBar from "../SideBar/SideBar";
 import "./Profile.css"; 
@@ -16,6 +17,6 @@ function Profile({handleCardClick, handleAddClick, clothingItems, onSignOut}) {
                 </section>
             </div>
         );
-}
+}    
 
 export default Profile;   

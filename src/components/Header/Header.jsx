@@ -6,7 +6,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, weatherData, onRegisterClick }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -21,13 +21,15 @@ function Header({ handleAddClick, weatherData }) {
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch/>
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add Clothes
-      </button>
+      {isLoggedIn && (
+        <button
+          onClick={handleAddClick}
+          type="button"
+          className="header__add-clothes-btn"
+        >
+          + Add Clothes
+        </button>
+      )}
       {isLoggedIn ? (
         <Link to="/profile" className="header__link">
           <div className="header_user-container">
@@ -46,7 +48,16 @@ function Header({ handleAddClick, weatherData }) {
           </div>
         </Link>
       ) : (
-        <Link to="/login" className="header__link">Sign In</Link>
+        <div className="header__auth-links">
+          <Link to="/login" className="header__link">Sign In</Link>
+          <button
+            type="button"
+            className="header__register-btn"
+            onClick={onRegisterClick}
+          >
+            Sign Up
+          </button>
+        </div>
       )}
     </header>
   );

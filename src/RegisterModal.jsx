@@ -1,7 +1,6 @@
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
-import { signup } from "./utils/auth";
 
 export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
   const [name, setName] = useState("");
@@ -13,7 +12,7 @@ export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
     setName(e.target.value);
   };
 
-  const handleAvatarChange = (e) => {
+  const handleAvatarChange = (e) => { 
     setAvatar(e.target.value);
   };
 

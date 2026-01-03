@@ -8,7 +8,7 @@ export const signup = async (name, avatar, email, password) => {
     });
     return response.json();
 };
-
+  
 export const signin = async (email, password) => {
     const response = await fetch('/signin', {
         method: 'POST',

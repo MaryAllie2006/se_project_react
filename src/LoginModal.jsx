@@ -1,8 +1,7 @@
 import "./LoginModal.css";
 import ModalWithForm from "./components/ModalWithForm/ModalWithForm";
 import { useState } from "react";
-import { signin } from "./utils/auth";
-
+   
 export default function LoginModal({ onClose, isOpen, onLoginSubmit }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

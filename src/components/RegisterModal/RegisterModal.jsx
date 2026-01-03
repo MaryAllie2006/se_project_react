@@ -26,13 +26,10 @@ export default function RegisterModal({ isOpen, onClose, onRegister }) {
         }
     };
 
-    if (!isOpen) return null;
-
     return (
-        <div className="modal">
+        <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
             <form className="modal__form" onSubmit={handleSubmit}>
                 <h2>Register</h2>
-                <label>Name</label>
                 <input type="text" value={name} onChange={e => setName(e.target.value)} required />
                 <label>Avatar URL</label>
                 <input type="url" value={avatar} onChange={e => setAvatar(e.target.value)} required />
@@ -46,4 +43,4 @@ export default function RegisterModal({ isOpen, onClose, onRegister }) {
             </form>
         </div>
     );
-}
+} 

@@ -1,9 +1,11 @@
 import "./ItemCard.css";
-import React from "react";
+import React, { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ItemCard({ item, handleCardClick, onCardLike }) {
+  const currentUser = useContext(CurrentUserContext);
+  const isLiked = currentUser && item.likes?.some(id => id === currentUser._id);
   const handleLike = () => {
-    onCardLike({ id: item._id, isLiked: item.likes && item.likes.includes(item.owner) });
+    onCardLike({ id: item._id, isLiked });
   };
   return (
     <li className="card">
@@ -14,11 +16,12 @@ function ItemCard({ item, handleCardClick, onCardLike }) {
         src={item.imageUrl}
         alt={item.name}
       />
-      <button className="card__like-button" onClick={handleLike}>
-        {item.likes && item.likes.includes(item.owner) ? "Dislike" : "Like"}
-      </button>
+      {currentUser && (
+        <button className="card__like-button" onClick={handleLike}>
+          {isLiked ? "Dislike" : "Like"}
+        </button>
+      )}
     </li>
   );
-}
 
 export default ItemCard;
