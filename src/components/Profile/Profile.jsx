@@ -3,11 +3,11 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 import SideBar from "../SideBar/SideBar";
 import "./Profile.css"; 
 
-function Profile({handleCardClick, handleAddClick, clothingItems, onSignOut}) {
+function Profile({handleCardClick, handleAddClick, clothingItems, onSignOut, onEditProfile}) {
         return (
             <div className="profile">
                 <section className="profile__sidebar">
-                    <SideBar />
+                    <SideBar onEditProfile={onEditProfile} />
                     <button className="profile__signout-button" onClick={onSignOut}>
                         Sign out
                     </button>

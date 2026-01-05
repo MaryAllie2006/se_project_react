@@ -1,7 +1,12 @@
 # SE Project React
 
-## Backend Repo link 
-    (https://github.com/MaryAllie2006/se_project_react.git)
+## Backend Repository
+
+If you have a separate backend (API) repository, add its public GitHub URL here. Automated reviewers require this link.
+
+Replace the placeholder below with your backend repo URL:
+
+[Backend Repository](https://github.com/your-username/your-backend-repo)
 
 ## Project Description
 

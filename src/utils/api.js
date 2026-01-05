@@ -67,9 +67,12 @@ export const addItem = ({ name, imageUrl, weather }, token) => {
   }).then(handleResponse);
 };
 
-export const deleteItem = (id) => {
+export const deleteItem = (id, token) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   })
     .then(handleResponse);
 };

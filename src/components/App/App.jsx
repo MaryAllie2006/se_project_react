@@ -9,7 +9,7 @@ import "./App.css";
 // Constants and utils
 import { coordinates, APIkey } from "../../utils/constants";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { getItems, addItem, deleteItem, addCardLike, removeCardLike, getCurrentUser } from "../../utils/api";
+import { getItems, addItem, deleteItem, addCardLike, removeCardLike, getCurrentUser, patchUser } from "../../utils/api";
 
 // Contexts
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
@@ -55,6 +55,19 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [currentUser, setCurrentUser] = useState(null);
   
+  // Restore session from stored JWT on app load
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (!token) return;
+    getCurrentUser(token)
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+      })
+      .catch(() => {
+        localStorage.removeItem("jwt");
+      });
+  }, []);
   // Registration handler
 
   // Like/Dislike handler
@@ -122,7 +135,8 @@ function App() {
 
 
   const handleDeleteItem = (id) => {
-    deleteItem(id)
+    const token = localStorage.getItem("jwt");
+    deleteItem(id, token)
       .then(() => {
         setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== id)
@@ -184,7 +198,7 @@ function App() {
                 element={
                   <LoginModal
                     onClose={closeModal}
-                    isOpen={activeModal === "login" || true}
+                    isOpen={true}
                     onLoginSubmit={async ({ email, password }) => {
                       const loginRes = await signin(email, password);
                       setIsLoggedIn(true);
