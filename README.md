@@ -6,7 +6,7 @@ If you have a separate backend (API) repository, add its public GitHub URL here.
 
 Replace the placeholder below with your backend repo URL:
 
-[Backend Repository](https://github.com/your-username/your-backend-repo)
+[https://github.com/MaryAllie2006/se_project_express.git]
 
 ## Project Description
 
