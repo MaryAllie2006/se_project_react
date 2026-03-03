@@ -7,7 +7,7 @@ import { signup, signin } from "../../utils/auth";
 import "./App.css";
 
 // Constants and utils
-import { coordinates, APIkey } from "../../utils/constants";
+import { coordinates, apiKey } from "../../utils/constants";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { getItems, addItem, deleteItem, addCardLike, removeCardLike, getCurrentUser, patchUser } from "../../utils/api";
 

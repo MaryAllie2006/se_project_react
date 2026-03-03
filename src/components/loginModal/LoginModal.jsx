@@ -1,20 +1,10 @@
-import "./RegisterModal.css";
+import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
-
-export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
+   
+export default function LoginModal({ onClose, isOpen, onLoginSubmit }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleAvatarChange = (e) => { 
-    setAvatar(e.target.value);
-  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,51 +16,25 @@ export default function RegisterModal({ onClose, isOpen, onRegisterSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegisterSubmit({ name, avatar, email, password })
+    onLoginSubmit({ email, password })
       .then(() => {
-        setName("");
-        setAvatar("");
         setEmail("");
         setPassword("");
         onClose();
       })
       .catch((error) => {
-        console.error("Error during registration:", error);
+        console.error("Error during login:", error);
       });
   };
 
   return (
     <ModalWithForm
-      title="Sign Up"
-      buttonText="Sign Up"
+      title="Sign In"
+      buttonText="Sign In"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="name-input" className="modal__label">
-        Name
-        <input
-          type="text"
-          className="modal__input"
-          id="name-input"
-          placeholder="Enter your name"
-          value={name}
-          onChange={handleNameChange}
-          required
-        />
-      </label>
-      <label htmlFor="avatar-input" className="modal__label">
-        Avatar URL
-        <input
-          type="url"
-          className="modal__input"
-          id="avatar-input"
-          placeholder="Enter your avatar URL"
-          value={avatar}
-          onChange={handleAvatarChange}
-          required
-        />
-      </label>
       <label htmlFor="email-input" className="modal__label">
         Email
         <input
