@@ -24,7 +24,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
-import LoginModal from "../../LoginModal";
+import LoginModal from "../loginModal/LoginModal";
 
 function App() {
     // Sign out handler
