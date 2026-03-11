@@ -188,11 +188,6 @@ function App() {
                 path="/profile"
                 element={isLoggedIn ? <Profile handleCardClick={handleCardClick} handleAddClick={handleAddClick} clothingItems={clothingItems} onSignOut={handleSignOut} onEditProfile={openEditProfileModal} /> : <Navigate to="/" />}
               />
-                        <EditProfileModal
-                          isOpen={isEditProfileOpen}
-                          onClose={closeEditProfileModal}
-                          onEditProfile={handleEditProfile}
-                        />
               <Route
                 path="/login"
                 element={
