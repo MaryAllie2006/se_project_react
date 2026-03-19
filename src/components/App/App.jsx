@@ -148,7 +148,7 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, APIkey)
+    getWeather(coordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
@@ -219,6 +219,11 @@ function App() {
             card={selectedCard}
             onClose={closeActiveModal}
             onDeleteItem={handleDeleteItem}
+          />
+          <EditProfileModal
+            isOpen={isEditProfileOpen}
+            onClose={closeEditProfileModal}
+            onEditProfile={handleEditProfile}
           />
           <RegisterModal
             isOpen={activeModal === "register"}

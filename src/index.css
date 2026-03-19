@@ -1,0 +1,7 @@
+@import "normalize.css";
+
+/* Global styles go below */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}

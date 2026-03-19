@@ -1,46 +1,60 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import useForm from '../../hooks/useForm';
+
+const initialFormValues = {
+  name: '',
+  avatar: '',
+  email: '',
+  password: '',
+};
+
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.name.trim()) errors.name = 'Name is required';
+  if (!values.avatar.trim()) errors.avatar = 'Avatar URL is required';
+  if (!values.email.trim()) errors.email = 'Email is required';
+  if (!values.password.trim()) errors.password = 'Password is required';
+
+  return errors;
+};
 
 export default function RegisterModal({ isOpen, onClose, onRegister }) {
-    const [name, setName] = useState("");
-    const [avatar, setAvatar] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+  const { values, errors, isSubmitting, handleChange, handleSubmit, resetForm } = useForm(
+    initialFormValues,
+    validate,
+    async (formValues) => {
+      await onRegister(formValues);
+      resetForm();
+      onClose();
+    }
+  );
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setError("");
-        try {
-            await onRegister({ name, avatar, email, password });
-            setName("");
-            setAvatar("");
-            setEmail("");
-            setPassword("");
-            onClose();
-        } catch (err) {
-            setError("Registration failed");
-        } finally {
-            setLoading(false);
-        }
-    };
+  return (
+    <ModalWithForm
+      title="Register"
+      buttonText={isSubmitting ? 'Registering...' : 'Register'}
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
+      <label>Name</label>
+      <input name="name" type="text" value={values.name} onChange={handleChange} required />
+      {errors.name && <div className="modal__error">{errors.name}</div>}
 
-    return (
-        <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-            <form className="modal__form" onSubmit={handleSubmit}>
-                <h2>Register</h2>
-                <input type="text" value={name} onChange={e => setName(e.target.value)} required />
-                <label>Avatar URL</label>
-                <input type="url" value={avatar} onChange={e => setAvatar(e.target.value)} required />
-                <label>Email</label>
-                <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-                <label>Password</label>
-                <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-                {error && <div className="modal__error">{error}</div>}
-                <button type="submit" disabled={loading}>{loading ? "Registering..." : "Register"}</button>
-                <button type="button" onClick={onClose}>Cancel</button>
-            </form>
-        </div>
-    );
-} 
+      <label>Avatar URL</label>
+      <input name="avatar" type="url" value={values.avatar} onChange={handleChange} required />
+      {errors.avatar && <div className="modal__error">{errors.avatar}</div>}
+
+      <label>Email</label>
+      <input name="email" type="email" value={values.email} onChange={handleChange} required />
+      {errors.email && <div className="modal__error">{errors.email}</div>}
+
+      <label>Password</label>
+      <input name="password" type="password" value={values.password} onChange={handleChange} required />
+      {errors.password && <div className="modal__error">{errors.password}</div>}
+    </ModalWithForm>
+  );
+}
+ 

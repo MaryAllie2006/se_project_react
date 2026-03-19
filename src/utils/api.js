@@ -36,7 +36,7 @@ export const removeCardLike = (id, token) => {
     },
   }).then(handleResponse);
 };
-const baseUrl = 'http://localhost:3001';
+export const baseUrl = 'http://localhost:3001';
 
 export const handleResponse = (res) => {
   if (res.ok) {
