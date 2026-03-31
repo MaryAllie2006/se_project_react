@@ -20,7 +20,7 @@ const validate = (values) => {
   return errors;
 };
 
-export default function RegisterModal({ isOpen, onClose, onRegister }) {
+export default function RegisterModal({ isOpen, onClose, onRegister, onSwitchToLogin }) {
   const { values, errors, isSubmitting, handleChange, handleSubmit, resetForm } = useForm(
     initialFormValues,
     validate,
@@ -54,6 +54,9 @@ export default function RegisterModal({ isOpen, onClose, onRegister }) {
       <label>Password</label>
       <input name="password" type="password" value={values.password} onChange={handleChange} required />
       {errors.password && <div className="modal__error">{errors.password}</div>}
+      <button type="button" className="modal__secondary-btn" onClick={onSwitchToLogin}>
+        Already have an account? Sign In
+      </button>
     </ModalWithForm>
   );
 }

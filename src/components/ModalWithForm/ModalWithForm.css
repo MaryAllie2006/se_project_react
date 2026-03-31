@@ -13,7 +13,7 @@
   transition: visibility 0.3s, opacity 0.3s linear;
 }
 
-.modal_opened{
+.modal__opened{
   visibility: visible; 
   opacity: 1;
 }     
@@ -96,6 +96,18 @@
     color:#fff; 
 
     
+}
+
+.modal__secondary-btn {
+  width: fit-content;
+  border: none;
+  background: transparent;
+  color: #1976d2;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 12px;
 }
 
 .modal__legend{

@@ -45,7 +45,7 @@ export const handleResponse = (res) => {
   return Promise.reject(`Error: ${res.status}`);
 };
 
-export function getItems() {
+export const getItems = () => {
   return fetch(`${baseUrl}/items`)
     .then(handleResponse);
 }

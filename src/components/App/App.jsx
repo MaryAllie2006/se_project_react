@@ -9,7 +9,15 @@ import "./App.css";
 // Constants and utils
 import { coordinates, apiKey } from "../../utils/constants";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { getItems, addItem, deleteItem, addCardLike, removeCardLike, getCurrentUser, patchUser } from "../../utils/api";
+import {
+  getItems,
+  addItem,
+  deleteItem,
+  addCardLike,
+  removeCardLike,
+  getCurrentUser,
+  patchUser,
+} from "../../utils/api";
 
 // Contexts
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
@@ -27,12 +35,12 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import LoginModal from "../loginModal/LoginModal";
 
 function App() {
-    // Sign out handler
-    const handleSignOut = () => {
-      localStorage.removeItem("jwt");
-      setIsLoggedIn(false);
-      setCurrentUser(null);
-    };
+  // Sign out handler
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+  };
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
@@ -44,17 +52,17 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
-    const openEditProfileModal = () => setIsEditProfileOpen(true);
-    const closeEditProfileModal = () => setIsEditProfileOpen(false);
+  const openEditProfileModal = () => setIsEditProfileOpen(true);
+  const closeEditProfileModal = () => setIsEditProfileOpen(false);
 
-    const handleEditProfile = async (data) => {
-      const token = localStorage.getItem("jwt");
-      const updatedUser = await patchUser(data, token);
-      setCurrentUser(updatedUser);
-    };
+  const handleEditProfile = async (data) => {
+    const token = localStorage.getItem("jwt");
+    const updatedUser = await patchUser(data, token);
+    setCurrentUser(updatedUser);
+  };
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [currentUser, setCurrentUser] = useState(null);
-  
+
   // Restore session from stored JWT on app load
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -77,7 +85,7 @@ function App() {
       addCardLike(id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === id ? updatedCard : item))
+            cards.map((item) => (item._id === id ? updatedCard : item)),
           );
         })
         .catch((err) => console.log(err));
@@ -85,7 +93,7 @@ function App() {
       removeCardLike(id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === id ? updatedCard : item))
+            cards.map((item) => (item._id === id ? updatedCard : item)),
           );
         })
         .catch((err) => console.log(err));
@@ -98,8 +106,21 @@ function App() {
     localStorage.setItem("jwt", loginRes.token);
     const user = await getCurrentUser(loginRes.token);
     setCurrentUser(user);
+    closeModal();
   };
+
+  const handleLogin = async ({ email, password }) => {
+    const loginRes = await signin(email, password);
+    setIsLoggedIn(true);
+    localStorage.setItem("jwt", loginRes.token);
+    const user = await getCurrentUser(loginRes.token);
+    setCurrentUser(user);
+    closeModal();
+  };
+
   const openRegisterModal = () => setActiveModal("register");
+  const openLoginModal = () => setActiveModal("login");
+
   const closeModal = () => setActiveModal("");
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
@@ -133,16 +154,15 @@ function App() {
       });
   };
 
-
   const handleDeleteItem = (id) => {
     const token = localStorage.getItem("jwt");
     deleteItem(id, token)
       .then(() => {
         setClothingItems((prevItems) =>
-          prevItems.filter((item) => item._id !== id)
+          prevItems.filter((item) => item._id !== id),
         );
-        setSelectedCard({}); 
-        closeActiveModal(); 
+        setSelectedCard({});
+        closeActiveModal();
       })
       .catch((err) => console.error(err));
   };
@@ -171,7 +191,12 @@ function App() {
       >
         <div className="page">
           <div className="page__content">
-            <Header handleAddClick={handleAddClick} weatherData={weatherData} onRegisterClick={openRegisterModal} />
+            <Header
+              handleAddClick={handleAddClick}
+              weatherData={weatherData}
+              onRegisterClick={openRegisterModal}
+              onLoginClick={openLoginModal}
+            />
             <Routes>
               <Route
                 path="/"
@@ -186,22 +211,28 @@ function App() {
               />
               <Route
                 path="/profile"
-                element={isLoggedIn ? <Profile handleCardClick={handleCardClick} handleAddClick={handleAddClick} clothingItems={clothingItems} onSignOut={handleSignOut} onEditProfile={openEditProfileModal} /> : <Navigate to="/" />}
+                element={
+                  isLoggedIn ? (
+                    <Profile
+                      handleCardClick={handleCardClick}
+                      handleAddClick={handleAddClick}
+                      clothingItems={clothingItems}
+                      onSignOut={handleSignOut}
+                      onEditProfile={openEditProfileModal}
+                    />
+                  ) : (
+                    <Navigate to="/" />
+                  )
+                }
               />
               <Route
-                path="/login"
+                path="/items"
                 element={
-                  <LoginModal
-                    onClose={closeModal}
-                    isOpen={true}
-                    onLoginSubmit={async ({ email, password }) => {
-                      const loginRes = await signin(email, password);
-                      setIsLoggedIn(true);
-                      localStorage.setItem("jwt", loginRes.token);
-                      const user = await getCurrentUser(loginRes.token);
-                      setCurrentUser(user);
-                      closeModal();
-                    }}
+                  <Main
+                    weatherData={weatherData}
+                    handleCardClick={handleCardClick}
+                    clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -229,6 +260,13 @@ function App() {
             isOpen={activeModal === "register"}
             onClose={closeModal}
             onRegister={handleRegister}
+            onSwitchToLogin={openLoginModal}
+          />
+          <LoginModal
+            isOpen={activeModal === "login"}
+            onClose={closeModal}
+            onLoginSubmit={handleLogin}
+            onSwitchToRegister={openRegisterModal}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

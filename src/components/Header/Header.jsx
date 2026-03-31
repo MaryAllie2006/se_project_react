@@ -6,7 +6,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
-function Header({ handleAddClick, weatherData, onRegisterClick }) {
+function Header({ handleAddClick, weatherData, onRegisterClick, onLoginClick }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -49,7 +49,13 @@ function Header({ handleAddClick, weatherData, onRegisterClick }) {
         </Link>
       ) : (
         <div className="header__auth-links">
-          <Link to="/login" className="header__link">Sign In</Link>
+          <button
+            type="button"
+            className="header__link header__signin-btn"
+            onClick={onLoginClick}
+          >
+            Sign In
+          </button>
           <button
             type="button"
             className="header__register-btn"
