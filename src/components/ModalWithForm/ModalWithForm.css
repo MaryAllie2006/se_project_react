@@ -33,6 +33,12 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.modal__button-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 .modal__title {
   margin: 28px 0 24px;
   font-family: "CabinetGrotesk-Medium";
@@ -49,7 +55,6 @@
   right: 28px;
   border: none;
   cursor: pointer;
-  background-image: url("../images/close-btn.svg");
 }
 .modal__radio-buttons {
   padding: 0;
@@ -84,7 +89,6 @@
 
 .modal__addGarment {
     width: 124px;
-    height: 36px;
     border-radius: 4px;
     gap: 8px;
     padding-top: 8px;
@@ -102,12 +106,10 @@
   width: fit-content;
   border: none;
   background: transparent;
-  color: #1976d2;
+  color: #838f9a;
   font-size: 0.95rem;
-  text-decoration: underline;
   cursor: pointer;
   padding: 0;
-  margin-top: 12px;
 }
 
 .modal__legend{

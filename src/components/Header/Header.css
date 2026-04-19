@@ -37,16 +37,59 @@
 }
 
 .header__add-clothes-btn {
-  width: 116;
-  height: 24;
-  top: 8px;
-  left: 1015px;
+  width: auto;
+  height: auto;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: transparent;
+  background-color: #2f7ef5;
+  color: white;
   font-family: Cabinet Grotesk;
   font-size: 15px;
   line-height: 24px;
+  font-weight: 600;
+}
+.header__avatar {
+  max-width: 60px;
+  border-radius: 50px;
+}
+
+.header__avatar_placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  font-size: 12px;
+}
+
+.header__auth-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.header__signin-btn {
+  padding: 10px 20px;
+  background-color: #2f7ef5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.header__register-btn {
+  padding: 10px 20px;
+  background-color: #2f7ef5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
 }

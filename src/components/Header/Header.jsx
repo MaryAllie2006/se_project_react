@@ -36,12 +36,12 @@ function Header({ handleAddClick, weatherData, onRegisterClick, onLoginClick }) 
             <p className="header_username">{currentUser.name}</p>
             {currentUser.avatar ? (
               <img
-                className="header_avatar"
+                className="header__avatar"
                 src={currentUser.avatar}
                 alt={currentUser.name}
               />
             ) : (
-              <div className="header_avatar header_avatar_placeholder">
+              <div className="header__avatar header__avatar_placeholder">
                 {currentUser.name.charAt(0).toUpperCase()}
               </div>
             )}

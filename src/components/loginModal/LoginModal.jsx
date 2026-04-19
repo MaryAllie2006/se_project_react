@@ -29,11 +29,13 @@ export default function LoginModal({ onClose, isOpen, onLoginSubmit, onSwitchToR
 
   return (
     <ModalWithForm
-      title="Sign In"
-      buttonText="Sign In"
+      title="Log In"
+      buttonText="Log In"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      secondaryButtonText="or Sign Up"
+      onSecondaryClick={onSwitchToRegister}
     >
       <label htmlFor="email-input" className="modal__label">
         Email
@@ -59,9 +61,6 @@ export default function LoginModal({ onClose, isOpen, onLoginSubmit, onSwitchToR
           required
         />
       </label>
-      <button type="button" className="modal__secondary-btn" onClick={onSwitchToRegister}>
-         or Sign Up
-      </button>
     </ModalWithForm>
   );
 }

@@ -82,7 +82,7 @@ function App() {
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
     if (!isLiked) {
-      addCardLike(id, token)
+      return addCardLike(id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
             cards.map((item) => (item._id === id ? updatedCard : item)),
@@ -90,7 +90,7 @@ function App() {
         })
         .catch((err) => console.log(err));
     } else {
-      removeCardLike(id, token)
+      return removeCardLike(id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
             cards.map((item) => (item._id === id ? updatedCard : item)),

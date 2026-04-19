@@ -38,6 +38,8 @@ export default function RegisterModal({ isOpen, onClose, onRegister, onSwitchToL
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      secondaryButtonText="Already have an account? Sign In"
+      onSecondaryClick={onSwitchToLogin}
     >
       <label>Name</label>
       <input name="name" type="text" value={values.name} onChange={handleChange} required />
@@ -54,9 +56,6 @@ export default function RegisterModal({ isOpen, onClose, onRegister, onSwitchToL
       <label>Password</label>
       <input name="password" type="password" value={values.password} onChange={handleChange} required />
       {errors.password && <div className="modal__error">{errors.password}</div>}
-      <button type="button" className="modal__secondary-btn" onClick={onSwitchToLogin}>
-        Already have an account? Sign In
-      </button>
     </ModalWithForm>
   );
 }
