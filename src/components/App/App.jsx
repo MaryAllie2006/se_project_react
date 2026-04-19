@@ -30,6 +30,7 @@ import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import LoginModal from "../loginModal/LoginModal";
@@ -106,7 +107,7 @@ function App() {
     localStorage.setItem("jwt", loginRes.token);
     const user = await getCurrentUser(loginRes.token);
     setCurrentUser(user);
-    closeModal();
+    closeActiveModal();
   };
 
   const handleLogin = async ({ email, password }) => {
@@ -115,13 +116,11 @@ function App() {
     localStorage.setItem("jwt", loginRes.token);
     const user = await getCurrentUser(loginRes.token);
     setCurrentUser(user);
-    closeModal();
+    closeActiveModal();
   };
 
   const openRegisterModal = () => setActiveModal("register");
   const openLoginModal = () => setActiveModal("login");
-
-  const closeModal = () => setActiveModal("");
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
       setCurrentTemperatureUnit("C");
@@ -212,21 +211,19 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  isLoggedIn ? (
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
                       handleCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
                       clothingItems={clothingItems}
+                      onCardLike={handleCardLike}
                       onSignOut={handleSignOut}
                       onEditProfile={openEditProfileModal}
                     />
-                  ) : (
-                    <Navigate to="/" />
-                  )
+                  </ProtectedRoute>
                 }
               />
               <Route
-                path="/items"
                 element={
                   <Main
                     weatherData={weatherData}
@@ -258,13 +255,13 @@ function App() {
           />
           <RegisterModal
             isOpen={activeModal === "register"}
-            onClose={closeModal}
+            onClose={closeActiveModal}
             onRegister={handleRegister}
             onSwitchToLogin={openLoginModal}
           />
           <LoginModal
             isOpen={activeModal === "login"}
-            onClose={closeModal}
+            onClose={closeActiveModal}
             onLoginSubmit={handleLogin}
             onSwitchToRegister={openRegisterModal}
           />

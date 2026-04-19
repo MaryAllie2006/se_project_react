@@ -1,3 +1,12 @@
+export const baseUrl = 'http://localhost:3001';
+
+export const handleResponse = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Error: ${res.status}`);
+};
+
 export const patchUser = (data, token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: 'PATCH',
@@ -35,14 +44,6 @@ export const removeCardLike = (id, token) => {
       Authorization: `Bearer ${token}`,
     },
   }).then(handleResponse);
-};
-export const baseUrl = 'http://localhost:3001';
-
-export const handleResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
 };
 
 export const getItems = () => {

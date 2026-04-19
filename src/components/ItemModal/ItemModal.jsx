@@ -6,16 +6,8 @@ function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
   const currentUser = useContext(CurrentUserContext);
   const isOwn = currentUser && card?.owner === currentUser._id;
   
-  if (activeModal !== "preview") {
-    return (
-      <div className="modal">
-        <div className="modal__content modal__content_type_image"></div>
-      </div>
-    );
-  }
-
   return (
-    <div className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}>
+    <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
         <button
           onClick={onClose}
