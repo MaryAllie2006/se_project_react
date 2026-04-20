@@ -18,14 +18,13 @@
   opacity: 1;
 }     
 .modal__content {
-  background-color: #fff;
-  border-radius: 12px;
-  position: relative;
-  padding: 28px 28px 36px;
-  max-width: 496px;
-  max-height: 456px;
-  box-sizing: border-box;
-  width: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    position: relative;
+    max-width: 496px;
+    max-height: 456px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .modal__form {
