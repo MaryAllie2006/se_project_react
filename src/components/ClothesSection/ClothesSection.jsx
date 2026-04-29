@@ -16,7 +16,7 @@ function ClothesSection({ clothingItems, handleCardClick, handleAddClick, onCard
           type="button"
           className="clothes-section__add-btn"
         >
-          + ADD NEW{" "}
+          + Add New{" "}
         </button>
       </div>
 

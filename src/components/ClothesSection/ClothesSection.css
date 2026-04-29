@@ -8,21 +8,23 @@
   display: flex;
   align-items: center;
   margin-left: 45px;
+  margin-bottom: 20px; 
+  align-items: baseline;
 }
 .clothes-section__title {
   font-size: 24px;
   font-weight: bold;
-  margin-right: 12px;
+  margin: 20px; 
 }
 
 .clothes-section__add-btn {
-  margin: 0;
-  border: none;
   background: transparent;
+  border: none;
   cursor: pointer;
-  width: 88;
-  height: 25;
-  top: 135px;
-  left: 499px;
-  font-size: 15px;
+  padding: 0;
+  width: 88px; 
+  height: 25px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
 }
