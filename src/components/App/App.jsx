@@ -154,15 +154,19 @@ function App() {
       });
   };
 
-  const handleDeleteItem = (id) => {
+  const handleDeleteItem = () => {
     const token = localStorage.getItem("jwt");
+    const id = selectedCard?._id;
+
+    if (!id) return;
+
     deleteItem(id, token)
       .then(() => {
         setClothingItems((prevItems) =>
-          prevItems.filter((item) => item._id !== id),
+          prevItems.filter((item) => item._id !== id)
         );
-        setSelectedCard({});
         closeActiveModal();
+        setSelectedCard({});
       })
       .catch((err) => console.error(err));
   };
