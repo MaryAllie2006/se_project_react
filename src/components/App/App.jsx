@@ -34,6 +34,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import LoginModal from "../loginModal/LoginModal";
+import DeleteConfirmation from "../DeleteConfirmationModal/deleteConfirmation";
 
 function App() {
   // Sign out handler
@@ -121,6 +122,7 @@ function App() {
 
   const openRegisterModal = () => setActiveModal("register");
   const openLoginModal = () => setActiveModal("login");
+
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
       setCurrentTemperatureUnit("C");
@@ -133,7 +135,6 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
-
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
@@ -165,6 +166,10 @@ function App() {
       })
       .catch((err) => console.error(err));
   };
+  const openDeleteModal = () => {
+  setActiveModal("delete-confirmation");
+  };
+
 
   useEffect(() => {
     getWeather(coordinates, apiKey)
@@ -241,12 +246,13 @@ function App() {
             isOpen={activeModal === "add-garment"}
             activeModal={activeModal}
             onAddItemModalSubmit={handleAddItemModalSubmit}
+            onDeleteItem={openDeleteModal}
           />
           <ItemModal
             activeModal={activeModal}
             card={selectedCard}
             onClose={closeActiveModal}
-            onDeleteItem={handleDeleteItem}
+            onDeleteItem={openDeleteModal}
           />
           <EditProfileModal
             isOpen={isEditProfileOpen}
@@ -265,6 +271,11 @@ function App() {
             onLoginSubmit={handleLogin}
             onSwitchToRegister={openRegisterModal}
           />
+          <DeleteConfirmation 
+            isOpen={activeModal === "delete-confirmation"}
+            onClose={closeActiveModal}
+            handleDeleteCard={handleDeleteItem}
+          /> 
         </div>
       </CurrentTemperatureUnitContext.Provider>
     </CurrentUserContext.Provider>

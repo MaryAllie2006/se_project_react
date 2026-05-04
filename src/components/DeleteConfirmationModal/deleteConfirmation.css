@@ -1,0 +1,52 @@
+.modal__content_type_confirm {
+  width: 100%;
+  max-width: 450px;
+  padding: 60px 0; /* Creates that spacious vertical look */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.modal__messages {
+  margin-bottom: 32px;
+}
+
+.modal__message {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  margin: 0;
+}
+
+.modal__confirm-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal__confirm-btn_type_delete {
+  color: #ff4d00;
+  font-weight: 700;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__confirm-btn_type_cancel {
+  color: #000;
+  font-weight: 700;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__confirm-btn_type_delete:hover,
+.modal__confirm-btn_type_cancel:hover {
+  opacity: 0.6;
+}
